@@ -1,20 +1,10 @@
 #!/usr/bin/env bash
 
-#                     _                             _                  _____ 
-#  _ __   __ _     __| |_   _ _ __ ___  _ __       | |_ ___        ___|___ / 
-# | '_ \ / _` |   / _` | | | | '_ ` _ \| '_ \ _____| __/ _ \ _____/ __| |_ \ 
-# | |_) | (_| |  | (_| | |_| | | | | | | |_) |_____| || (_) |_____\__ \___) |
-# | .__/ \__, |___\__,_|\__,_|_| |_| |_| .__/       \__\___/      |___/____/ 
-# |_|    |___/_____|                   |_|                                   
-#
-# Project at https://github.com/gabfl/pg_dump-to-s3
-#
-
 set -e
 
 # Set current directory
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
+echo $DIR
 # Import config file
 if [ -f "${HOME}/.pg_dump-to-s3.conf" ]; then
     source ${HOME}/.pg_dump-to-s3.conf
@@ -24,8 +14,9 @@ fi
 
 # Vars
 NOW=$(date +"%Y-%m-%d-at-%H-%M-%S")
+echo $NOW
 DELETETION_TIMESTAMP=`[ "$(uname)" = Linux ] && date +%s --date="-$DELETE_AFTER"` # Maximum date (will delete all files older than this date)
-
+echo $DELETETION_TIMESTAMP
 # Split databases
 IFS=',' read -ra DBS <<< "$PG_DATABASES"
 

@@ -1,0 +1,6 @@
+[fundingservice]
+host=va-uat-funcding-service-rds-snopshot-dbcopy-poc-cluster.cluster-ctllqcqielde.us-east-1.rds.amazonaws.com
+port=<your_psql_port(probably 5432)>
+db=<your_db_name>
+user=<your_username>
+password=<your_password>
